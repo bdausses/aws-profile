@@ -1,34 +1,21 @@
 # aws-profile.sh
 
-`aws-profile.sh` is a Zsh script designed to simplify the management of AWS CLI profiles. It allows you to easily add, delete, list, and select AWS profiles from your configuration files without manually editing them. This script aims to streamline your workflow when working with multiple AWS accounts and regions.
+**Important:** This script is used to both select and set the `AWS_PROFILE` environment variable, but can also be used to manage (add and/or delete) AWS CLI profiles.  
+
+If you want to use this script to select and set that `AWS_PROFILE` environment variable, you must **source** this script rather than running it directly. For example, use `source aws-profile.sh` instead of `./aws-profile.sh`.
+
+If you want to use the script to manage (add and/or delete) AWS CLI profiles, the sourcing does not need to be used.
 
 ## Features
 
-- **Add Profiles:**
+* **Add Profiles:**
   Easily add a new AWS profile by entering the profile name, AWS access key, secret access key, and default region. The script automatically appends the new profile to both `~/.aws/config` and `~/.aws/credentials` with a timestamped comment.
 
-- **Delete Profiles:**
+* **Delete Profiles:**
   Remove an existing AWS profile from your configuration. The script lists all available profiles (with associated comments) and prompts you to confirm deletion.
 
-- **List Profiles:**
-  Display a neatly formatted table of available profiles, including an ID, profile name, and any comment present in the configuration file. This makes it easy to see profile metadata at a glance.
-
-- **Select Profiles:**
-  Set your current AWS profile interactively. You can either run the script without any options to be prompted or pass a numeric argument to automatically select a profile.
-
-## Use Cases
-
-- **Multi-Account Management:**
-  If you manage multiple AWS accounts (e.g., production, staging, development, personal), this script helps you switch between profiles without the need to edit files manually.
-
-- **Streamlined Workflows:**
-  For developers and DevOps engineers, the ability to quickly add or remove profiles is a time-saver when spinning up or decommissioning environments.
-
-- **CI/CD Pipelines:**
-  Integrate profile management into your CI/CD workflows to automate the setup of AWS environments based on the appropriate credentials.
-
-- **Learning and Troubleshooting:**
-  The script's clear, comment-based output makes it easier to track when and how profiles were added, providing useful metadata for troubleshooting or auditing.
+* **Select Profiles:**
+  Set your current AWS profile interactively or via an auto-selection feature by passing a numeric argument.  To effect the desired change in your current shell, you must source this script as noted in the Important note at the top of this document.
 
 ## Usage
 
@@ -44,36 +31,20 @@ You'll be prompted to enter the profile name, AWS access key ID, secret access k
 
 ### Deleting a Profile
 
-Run the script with the `-d` flag:
+To delete an existing profile, run the script with the `-d` flag:
 
 ```sh
 ./aws-profile.sh -d
 ```
 
-The script will list available profiles with their associated comments. You can then select the profile number you wish to delete. You have the option to cancel deletion by pressing Enter.
-
-### Listing Profiles
-
-To simply view all available profiles, use the `-l` flag:
-
-```sh
-./aws-profile.sh -l
-```
-
-This displays a table with column headers (`Id | Profile Name | Profile Comment`), making it easy to review all your AWS profiles.
+The script will list available profiles with their associated comments and prompt you to select the profile number to delete.
 
 ### Selecting a Profile
 
-Without any options, the script will prompt you to select an existing profile interactively:
+Without any options, the script will prompt you to select an existing profile interactively. You can also pass a numeric argument to auto-select a profile. For example, to select profile number 3:
 
 ```sh
-./aws-profile.sh
-```
-
-Alternatively, you can pass a numeric argument to auto-select the profile. For example, to select profile number 3:
-
-```sh
-./aws-profile.sh 3
+source aws-profile.sh 3
 ```
 
 If an invalid or empty selection is made, the script will display a friendly message and take no action.
