@@ -2,9 +2,11 @@
 
 **Important:** This script is used to both select and set the `AWS_PROFILE` environment variable, but can also be used to manage (add and/or delete) AWS CLI profiles.  
 
-If you want to use this script to select and set that `AWS_PROFILE` environment variable, you must **source** this script rather than running it directly. For example, use `source ./aws-profile.sh` instead of `./aws-profile.sh`.
+If you want to use this script to select and set that `AWS_PROFILE` environment variable, you must **source** this script rather than running it directly. For example, use `source aws-profile.sh` instead of `aws-profile.sh`.
 
 If you want to use the script to manage (add and/or delete) AWS CLI profiles, the sourcing does not need to be used.
+
+Examples in this README assume you have added the script to a location in your PATH for ease of use.
 
 ## Features
 
@@ -24,7 +26,7 @@ If you want to use the script to manage (add and/or delete) AWS CLI profiles, th
 Run the script with the `-a` flag:
 
 ```sh
-./aws-profile.sh -a
+aws-profile.sh -a
 ```
 
 You'll be prompted to enter the profile name, AWS access key ID, secret access key (input is hidden), and the default region. The new profile will be appended to your configuration files.
@@ -34,7 +36,7 @@ You'll be prompted to enter the profile name, AWS access key ID, secret access k
 To delete an existing profile, run the script with the `-d` flag:
 
 ```sh
-./aws-profile.sh -d
+aws-profile.sh -d
 ```
 
 The script will list available profiles with their associated comments and prompt you to select the profile number to delete.
