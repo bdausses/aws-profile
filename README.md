@@ -41,7 +41,13 @@ The script will list available profiles with their associated comments and promp
 
 ### Selecting a Profile
 
-Without any options, the script will prompt you to select an existing profile interactively. You can also pass a numeric argument to auto-select a profile. For example, to select profile number 3:
+Without any options, the script will prompt you to select an existing profile interactively. 
+
+```sh
+source aws-profile.sh
+```
+
+Alternatively, you can also pass a numeric argument to auto-select a profile if you know which profile you want loaded. For example, to select profile number 3:
 
 ```sh
 source aws-profile.sh 3
