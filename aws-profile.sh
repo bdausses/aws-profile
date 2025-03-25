@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 # Determine if the script is being sourced or executed
-if [ "${(%):-%N}" != "$0" ]; then
+(return 0 2>/dev/null)
+if [ $? -eq 0 ]; then
     SOURCED=1
 else
     SOURCED=0

@@ -2,7 +2,7 @@
 
 **Important:** This script is used to both select and set the `AWS_PROFILE` environment variable, but can also be used to manage (add and/or delete) AWS CLI profiles.  
 
-If you want to use this script to select and set that `AWS_PROFILE` environment variable, you must **source** this script rather than running it directly. For example, use `source aws-profile.sh` instead of `./aws-profile.sh`.
+If you want to use this script to select and set that `AWS_PROFILE` environment variable, you must **source** this script rather than running it directly. For example, use `source ./aws-profile.sh` instead of `./aws-profile.sh`.
 
 If you want to use the script to manage (add and/or delete) AWS CLI profiles, the sourcing does not need to be used.
 
